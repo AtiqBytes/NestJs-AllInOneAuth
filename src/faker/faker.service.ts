@@ -49,7 +49,11 @@ export class FakerService {
             ClientPermission.UpdateAnnouncement,
         ]);
 
+         // Destructure the permission array
+
         const [createUserPermission, readUserPermission, updateUserPermission, deleteUserPermission, createAnnouncementPermission, updateAnnouncementPermission] = permissions
+
+        
 
 
     
