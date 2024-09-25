@@ -1,3 +1,4 @@
+import { Permission } from "src/auth/entities/permission.entity";
 import { Role } from "src/auth/entities/role.entity";
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -15,8 +16,12 @@ export class User {
  @Column()
  password:string;
 
- @ManyToMany(()=>Role)
+ @ManyToMany(()=>Role,(role)=>role.users)
  @JoinTable()
  roles:Role[];
     
+ @ManyToMany(()=>Permission)
+ @JoinTable()
+ permissions?:Permission[];
+
 }
