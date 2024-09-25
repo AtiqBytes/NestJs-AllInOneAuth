@@ -16,7 +16,13 @@ export class UsersService {
       
       async findOne(username:string):Promise<User | undefined>
       {
-        return this.usersRepository.findOne({where : {username}})
+        const query =  this.usersRepository.createQueryBuilder('user')
+        .where('user.username= :username', {username})
+        .leftJoinAndSelect('user.roles','role')
+        .leftJoinAndSelect('role.permissions', 'rolePermission')
+        .leftJoinAndSelect('user.permissions','permission');
+
+        return await query.getOne();
       }
 
       async create(userDto:CreateUserDto):Promise<User>
