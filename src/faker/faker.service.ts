@@ -53,8 +53,23 @@ export class FakerService {
 
         const [createUserPermission, readUserPermission, updateUserPermission, deleteUserPermission, createAnnouncementPermission, updateAnnouncementPermission] = permissions
 
-        
+        //
+        const adminRole = await this.createRole(
+            {
+                name:CLientRole.Admin,
+                permissions:[createUserPermission, readUserPermission, updateUserPermission, deleteUserPermission]
+            }
+            
+        )
+    const editorRole = await this.createRole({
+        name:CLientRole.Editor,
+        permissions: [createUserPermission, readUserPermission]
+    })
 
+    const userRole = await this.createRole({
+        name:CLientRole.User,
+        permissions : [readUserPermission]
+    })
 
     
 
