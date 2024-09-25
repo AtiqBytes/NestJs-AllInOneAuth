@@ -49,6 +49,8 @@ export class FakerService {
             ClientPermission.UpdateAnnouncement,
         ]);
 
+        const [createUserPermission, readUserPermission, updateUserPermission, deleteUserPermission, createAnnouncementPermission, updateAnnouncementPermission] = permissions
+
 
     
 
