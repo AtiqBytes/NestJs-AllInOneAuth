@@ -38,4 +38,23 @@ export class FakerService {
     }
 
     
+    async setUpForDemo()
+    {
+        const permissions = await this .createPermissions([
+            ClientPermission.CreateUser,
+            ClientPermission.ReadUser,
+            ClientPermission.Updateuser,
+            ClientPermission.DeleteUser,
+            ClientPermission.CreateAnnouncement,
+            ClientPermission.UpdateAnnouncement,
+        ]);
+
+
+    
+
+
+
+
+
+    }
 }
