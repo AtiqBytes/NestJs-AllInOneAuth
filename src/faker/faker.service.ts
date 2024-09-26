@@ -72,8 +72,48 @@ export class FakerService {
     })
 
     
+    const admin = await this.usersService.create({
+        username : 'atiq',
+        password : '123',
+        email  : 'atiq@gmail.com'
+    });
 
+    this.usersService.update(admin.id,{
+        roles : [adminRole,editorRole,userRole],
+        permissions : permissions
+    })
 
+    const editor = await this.usersService.create({
+        username : 'sajid',
+        password : '123',
+        email : 'sajid@gmail.com'
+    })
+
+    this.usersService.update(editor.id,{
+        roles : [editorRole,userRole],
+        permissions : permissions
+    })
+
+    const user = await this.usersService.create({
+        username : 'wajid',
+        password :  '123',
+        email : 'wajid@gmail.com'
+    })
+
+    this.usersService.update(user.id,{
+        roles:[userRole],
+
+    })
+
+    return {
+        permissions,
+        adminRole,
+        editorRole,
+        userRole,
+        admin,
+        editor,
+        user
+    }
 
 
 
