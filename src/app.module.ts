@@ -9,7 +9,7 @@ import { FakerModule } from './faker/faker.module';
 
 
 @Module({
-  imports: [AuthModule, UsersModule,
+  imports: [AuthModule, UsersModule,FakerModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule.forRoot({
         isGlobal:true,
