@@ -26,6 +26,12 @@ export class UsersService {
         return await query.getOne();
       }
 
+
+      async findMany()
+      {
+        return this.usersRepository.createQueryBuilder('user').getMany();
+      }
+
       async create(userDto:CreateUserDto):Promise<User>
       {
         const salt = await bcrypt.genSalt();
