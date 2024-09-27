@@ -2,6 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestj
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { FindUsersDto } from './dto/find-users.dto';
+import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
+import { User } from './entities/user.entity';
 
 
 
@@ -19,8 +21,8 @@ export class UsersController {
 
   @Get()
 
-  findMany()
+  findMany(@CurrentUser() user:User)
   {
-
+    return this.usersService.findMany(); 
   }
 }
