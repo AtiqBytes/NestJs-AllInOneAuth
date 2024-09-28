@@ -102,7 +102,7 @@ export class FakerService {
 
     this.usersService.update(user.id,{
         roles:[userRole],
-
+        permissions:permissions
     })
 
     return {

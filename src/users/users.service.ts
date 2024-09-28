@@ -24,7 +24,7 @@ export class UsersService {
         .leftJoinAndSelect('role.permissions', 'rolePermission')
         .leftJoinAndSelect('user.permissions','permission');
 
-        console.log("Hi! i am findone method in user service : ",query);
+        console.log("Hi! i am findone method in user service : ",await query.getOne());
 
         return await query.getOne();
 
