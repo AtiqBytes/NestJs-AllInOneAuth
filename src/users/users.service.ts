@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import * as bcrypt from 'bcrypt';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { FindUsersDto } from './dto/find-users.dto';
 
 
 @Injectable()
@@ -23,7 +24,10 @@ export class UsersService {
         .leftJoinAndSelect('role.permissions', 'rolePermission')
         .leftJoinAndSelect('user.permissions','permission');
 
+        console.log("Hi! i am findone method in user service : ",query);
+
         return await query.getOne();
+
       }
 
 
@@ -38,12 +42,15 @@ export class UsersService {
         console.log("hi i am salt here : ",salt)
         const hashedPassword = await bcrypt.hash(userDto.password, salt);
         const user = this.usersRepository.create({...userDto,password:hashedPassword})
+        console.log("Hi, i am create method in user service : ",user);
         return this.usersRepository.save(user);
       }
 
       async update(userId:number, dto:UpdateUserDto)
       {
         const user = await this.usersRepository.findOne({where:{id:userId}})
+
+        console.log("Hi! i am update emthod in user service : ",user);
 
         const {roles,permissions} = dto;
 

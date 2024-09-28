@@ -16,10 +16,12 @@ constructor(private userService:UsersService, private jwtService: JwtService){}
 async validateUser(username: string, password: string): Promise<any> {
   // First, try to find the user in the user repository
   const user = await this.userService.findOne(username);
+  console.log("Hi! i am validateUser method in auth service : ",user);
   if (user && await bcrypt.compare(password, user.password)) {
     const { password, ...result } = user;
 
-   
+    console.log("Hi! printing result array in validateuser(auth service) : ",result);
+
      return result
   }
 
@@ -53,6 +55,7 @@ async validateUser(username: string, password: string): Promise<any> {
       try {
         const payload = this.jwtService.verify(token);
         const user = await this.userService.findOne(payload.username);
+        console.log("Hi! i am validateRefreshToken(auth service) : ",user);
         if (user) {
           return { ...user, token };
         }
