@@ -28,7 +28,7 @@ export class UsersController {
 
   @Get()
   @UseGuards(JwtAuthGuard,PermissionsGuard)
-  @Permissions(ClientPermission.ReadUser)
+  @Permissions(ClientPermission.CreateAnnouncement)
   findMany()
   {
     return this.usersService.findMany(); 

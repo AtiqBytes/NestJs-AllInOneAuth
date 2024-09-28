@@ -15,7 +15,7 @@ export function getClientPermissions(user: Partial<User>): Set<string> {
   );
 
   // Combine both sets of permissions
-//   return new Set<string>([...rolePermissions, ...directPermissions]);
+  // return new Set<string>([...rolePermissions, ...directPermissions]);
 
   //only reutrn permissions of roles
   return new Set<string>([...rolePermissions]);
