@@ -8,6 +8,9 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { CLientRole } from 'src/auth/enums/role.enum';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { ClientPermission } from 'src/auth/enums/permission.enum';
+import { Permissions } from 'src/auth/decorators/permissions.decorator';
+import { PermissionsGuard } from 'src/auth/guards/permissions.guard';
 
 
 
@@ -24,8 +27,8 @@ export class UsersController {
 
 
   @Get()
-  @UseGuards(JwtAuthGuard,RolesGuard)
-  @Roles(CLientRole.Admin)
+  @UseGuards(JwtAuthGuard,PermissionsGuard)
+  @Permissions(ClientPermission.ReadUser)
   findMany()
   {
     return this.usersService.findMany(); 
