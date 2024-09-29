@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { FakerModule } from './faker/faker.module';
+import { CaslModule } from './casl/casl.module';
 
 
 @Module({
@@ -27,6 +28,7 @@ import { FakerModule } from './faker/faker.module';
       inject: [ConfigService],
     }),
     FakerModule,
+    CaslModule,
   ],
   controllers: [AppController],
   providers: [AppService],
